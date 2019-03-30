@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "feaad461-0bb2-4ed3-b673-fdc6bff90698",
+		"name": "kiwi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get next stop over",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/5c9eb811d48fed2122f9b0ae/next-stop-over",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"5c9eb811d48fed2122f9b0ae",
+						"next-stop-over"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/stopovers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/stopovers?location=HKG&startDate=2019-04-12T17:05:00Z&endDate=2019-04-12T20:15:00Z",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"stopovers"
+					],
+					"query": [
+						{
+							"key": "location",
+							"value": "HKG"
+						},
+						{
+							"key": "startDate",
+							"value": "2019-04-12T17:05:00Z"
+						},
+						{
+							"key": "endDate",
+							"value": "2019-04-12T20:15:00Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/create-match",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"users\": [\"5c9eb811d48fed2122f9b0ae\",\"5c9eb811d48fed2122f9b0aa\"],\n\t\"startTime\": \"2018-04-12T01:05:00Z\",\n\t\"endTime\": \"2018-04-12T21:15:00Z\",\n\t\"location\": \"HKG\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/create-match",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"create-match"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/5c9eb811d48fed2122f9b0aa/matches",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/5c9eb811d48fed2122f9b0aa/matches",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"5c9eb811d48fed2122f9b0aa",
+						"matches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/create-message",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"matchId\": \"5c9f00bc98ba442cf9ceb5d8\",\n\t\"content\": \"hello yoshi\",\n\t\"sender\": \"5c9eb811d48fed2122f9b0aa\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/create-message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"create-message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/5c9f00bc98ba442cf9ceb5d8/messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/5c9f00bc98ba442cf9ceb5d8/messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"5c9f00bc98ba442cf9ceb5d8",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

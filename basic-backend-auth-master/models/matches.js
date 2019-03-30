@@ -5,9 +5,9 @@ const { ObjectId } = Schema.Types;
 
 const matchesSchema = new Schema({
   users: [{ type: ObjectId, ref: 'User'}],
-  startTime: String,
-  endTime: String,
-  locaztion: String
+  startTime: Date,
+  endTime: Date,
+  location: String
 });
 
 const Matches = mongoose.model('Matches', matchesSchema);
