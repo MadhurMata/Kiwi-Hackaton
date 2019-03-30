@@ -1,17 +1,15 @@
-import React from 'react'
-import './CardStopOver.css'
+import React from 'react';
+import './CardStopOver.css';
+import api from '../lib/api-service';
 const moment = require('moment');
 
 
 export default function CardStopOver(props) {
 
-  const open = () => {
-    console.log("open");
-  }
-  console.log(props);
-
-  const { start, end } = props.stopover.stopOvers[0];
-  const { avatar, username, nationality } = props.stopover.userId;
+  const { start, end, location } = props.stopover.stopOvers[0];
+  const { userId } = props.stopover;
+  const { avatar, username, nationality } = userId;
+  const { user } = props;
 
   const startMoment = moment(start);
   const endMoment = moment(end);
@@ -23,6 +21,14 @@ export default function CardStopOver(props) {
 
   // execution
   let f = moment.utc(diff).format("H:mm").toString().replace(":","h") + "min";
+
+  const open = () => {
+  //   api.createMatch([user, userId], start, end, location)
+  //     .then(createdMatch =>)
+  }
+  console.log(props);
+
+
 
   return (
     <div id='card-stop-over'>

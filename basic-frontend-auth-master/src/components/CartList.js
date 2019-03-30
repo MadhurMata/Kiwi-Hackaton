@@ -7,7 +7,7 @@ class CartList extends Component {
     const { otherUsersStopOver } = this.props;
     
     return (
-      <div>
+      <div className="classList">
         {otherUsersStopOver.map((stopover,i) => <CardStopOver stopover={stopover} key={i}/>)}
       </div>
     )
