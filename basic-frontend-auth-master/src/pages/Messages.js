@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import Send from "@kiwicom/orbit-components/lib/icons/Send";
-import Card, { CardHeader } from "@kiwicom/orbit-components/lib/Card";
 import Heading from "@kiwicom/orbit-components/lib/Heading";
 import Text from "@kiwicom/orbit-components/lib/Text";
 import api from '../lib/api-service';
 import './Messages.css';
+import { withAuth } from '../components/AuthProvider';
 
-export default class Messages extends Component {
+class Messages extends Component {
   state = {
     content: '',
     messages: [],
   }
 
   componentDidMount() {
-    const { matchId } = this.props;
+    const { matchId } = this.props.location.state;
+    console.log("matchID from location",matchId);
     api.getMessagesOfMatch(matchId)
       .then(messages => {
         this.setState({
@@ -28,39 +29,50 @@ export default class Messages extends Component {
       content: e.target.value,
     })
   }
-  sendMessage = () => {
+  sendMessage = async () => {
     const { content } = this.state;
-    const { matchId, user } = this.props;
-    api.createMessage(matchId ,content, user);
+    const { _id } = this.props.user;
+    const { matchId } = this.props.location.state;
+    await api.createMessage(matchId, content, _id );
+    const messages = await api.getMessagesOfMatch(matchId)
+
+    this.setState({
+      messages,
+    });
   }
 
   render() {
     const { messages } = this.state;
+
+    console.log("STATE MESSAGES",messages);
     const { user } = this.props;
     return (
-    <div className="conversation"> 
-      {messages && messages.map(message => {
-        if(message.sender !== user) {
-          return (
-            <div className="box-conversation recipient">
-              <Heading type='title3'>Josefine</Heading>
-              <Text>Hey there, do you want to meet.</Text>
-            </div>
-          );
-        } else {
-          return (
-            <div className="box-conversation sender">
-              <Heading type='title3'>Matt</Heading>
-              <Text>Yes sure, where?</Text>
-            </div>
-          );
-        }
-      })}
-      <div className="input-bar">
-         <input className="input" type="text" placeholder='Type an SMS message' value={this.state.content} onChange={this.textInputHandler} />
-         <button className="send-btn" onClick={this.sendMessage}><Send /></button>
+      <div className="conversation">
+        {messages && messages.map(message => {
+          console.log("message",message);
+          if (message.sender !== user) {
+            return (
+              <div className="box-conversation sender">
+                <Heading type='title3'>{message.sender.username}</Heading>
+                <Text>{message.content}</Text>
+              </div>
+            );
+          } else {
+            return (
+              <div className="box-conversation recipient">
+                <Heading type='title3'>{message.sender.username}</Heading>
+                <Text>{message.content}</Text>
+              </div>
+            );
+          }
+        })}
+        <div className="input-bar">
+          <input className="input" type="text" placeholder='Type an SMS message' value={this.state.content} onChange={this.textInputHandler} />
+          <button className="send-btn" onClick={this.sendMessage}><Send /></button>
+        </div>
       </div>
-    </div>
     );
   }
 }
+
+export default withAuth(Messages);
