@@ -55,13 +55,16 @@ router.get('/stopovers', (req, res, next) => {
     })
 });
 
-router.post('/create-match', (req, res, next) => {
+router.post('/create-match', async (req, res, next) => {
   const { users, startTime, endTime, location } = req.body;
-
-  Match.create({ users, startTime, endTime, location })
-    .then(createdMatch => {
-      res.json(createdMatch);
-    });
+  const previousMatch = await Match.find({ users, startTime, endTime, location })
+  console.log("previousMatch", previousMatch);
+  if (previousMatch.length===0) {
+    const createdMatch = await Match.create({ users, startTime, endTime, location })
+    res.json(createdMatch);
+  }else{
+    res.json(previousMatch[0]);
+  }
 });
 
 router.get('/:userId/matches', (req, res, next) => {
@@ -77,7 +80,10 @@ router.get('/:matchId/messages', (req, res, next) => {
   const { matchId } = req.params;
 
   Message.find({ matchId: matchId })
+    .populate('sender')
     .then(messages => {
+
+      console.log(messages);
       res.json(messages);
     });
 })

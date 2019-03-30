@@ -4,10 +4,13 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/user');
 
+
+
 const { isLoggedIn, isNotLoggedIn, validationLoggin } = require('../helpers/middlewares');
 
-router.get('/me', isLoggedIn(), (req, res, next) => {
-  res.json(req.session.currentUser);
+router.get('/me', async (req, res, next) => {
+  const user = await User.findById("5c9f14e33f8a0430fa3e6b6c")
+  res.json(user);
 });
 
 router.post('/login', isNotLoggedIn(), validationLoggin(), (req, res, next) => {
