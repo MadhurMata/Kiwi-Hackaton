@@ -7,7 +7,7 @@ const userSchema = new Schema({
   interests: Array,
   languages: Array,
   avatar: String,
-  nationallity: String
+  nationality: String
 }, {
   timestamps: {
     createdAt: 'created_at',
