@@ -8,8 +8,9 @@ import Navbar from './components/Navbar';
 // import Login from './pages/Login';
 import AuthProvider from './components/AuthProvider';
 import AnonRoute from './components/AnonRoute';
-
 import Home from './pages/Home';
+import './App.css'
+
 
 class App extends Component {
   render() {
