@@ -26,6 +26,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
           stopOvers.push({
             start: flight.local_arrival,
             end: arr[i + 1].local_departure,
+            city:flight.cityTo,
             location: flight.flyTo,
             duration,
           });

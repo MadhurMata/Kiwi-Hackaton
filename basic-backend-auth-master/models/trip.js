@@ -7,6 +7,7 @@ const tripSchema = new Schema({
   stopOvers: [{
     start: Date,
     end: Date,
+    city: String,
     location: String,
     duration: Number,
   }],
