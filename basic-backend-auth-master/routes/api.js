@@ -48,12 +48,10 @@ router.get('/stopovers', (req, res, next) => {
         ]
       }
     }
-  })
+  }).populate('userId')
     .then((trips) => {
-      console.log("trips stopover", trips);
+      res.json(trips)
     })
-
-
 });
 
 
