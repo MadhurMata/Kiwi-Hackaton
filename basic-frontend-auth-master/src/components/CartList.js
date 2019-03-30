@@ -15,7 +15,7 @@ class CartList extends Component {
   }
 
   getNextStopOver = () => {
-    tripService.getNextStopOver("5c9f14e33f8a0430fa3e6b6c")
+    tripService.getNextStopOverOfUser("5c9f14e33f8a0430fa3e6b6c")
       .then(data => {
         console.log(data)
         this.setState({
