@@ -1,16 +1,33 @@
 import React, { Component } from 'react'
+import tripService from "../lib/api-service";
+import "./banner.css";
+import moment from 'moment';
+
+
+
 
 export default class Banner extends Component {
 
 
   render() {
-    const { city } = this.props.stopOver;
+    const { city,end } = this.props.stopOver;
 
+    let time = moment(new Date()).format('h:mm');
+    let endTime = moment(end).format('h:mm');
     return (
-      <div>
-        <h1>Banner</h1>
-        <h2>{city}</h2>
-        <img src="https://www.indiaretailforum.in/wp-content/uploads/2018/01/mall.jpg" alt="Airport img" />
+      <div className="banner">
+        <div>
+          <h1>{city} Airport</h1>
+          <img src="/honkong.jpg" alt="Airport img" />
+          <div className="next-fligth-time">
+            <p>Current time</p>
+            <h3 >{time}</h3>
+          </div>
+          <div className="current-time">
+            <p>Next departure</p>
+            <h3>{endTime}</h3>
+          </div>
+        </div>  
       </div>
     )
   }

@@ -32,7 +32,7 @@ export default function CardStopOver(props) {
             <img src={avatar} alt={username} id='card-stop-over-avatar' />
             <div>
               <h2>{username}</h2>
-              <p>{nationality}</p>
+              <p id='card-stop-over-nationality'>{nationality}</p>
               <p className='colorGreen'>Arriving at {moment(start).format('h:mm')}</p>
             </div>
           </div>
