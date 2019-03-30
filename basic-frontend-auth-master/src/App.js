@@ -16,10 +16,10 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="container">
-          <Messages />
           <Navbar data='data' />
           <Switch>
           <AnonRoute exact path="/" component={Home} />
+          <AnonRoute exact path="/messages" component={Messages} />
 
             {/* <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
