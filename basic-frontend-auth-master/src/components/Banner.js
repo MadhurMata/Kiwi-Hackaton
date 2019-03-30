@@ -12,11 +12,11 @@ export default class Banner extends Component {
   }
 
   getNextStopOver = () => {
-    tripService.getNextStopOver()
+    tripService.getNextStopOver("5c9f14e33f8a0430fa3e6b6c")
       .then(data => {
         console.log(data)
         this.setState({
-          stopOver: data,
+          stopOver: data[0],
         })
       }).catch(error => {
         console.log("error", error);
@@ -24,10 +24,13 @@ export default class Banner extends Component {
   };
 
   render() {
+    const { city } = this.state.stopOver;
+
     return (
       <div>
         <h1>Banner</h1>
-        <img src="https://www.indiaretailforum.in/wp-content/uploads/2018/01/mall.jpg" alt="Airport img"/>
+        <h2>{city}</h2>
+        <img src="https://www.indiaretailforum.in/wp-content/uploads/2018/01/mall.jpg" alt="Airport img" />
 
       </div>
     )
