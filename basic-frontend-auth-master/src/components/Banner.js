@@ -16,15 +16,15 @@ export default class Banner extends Component {
   }
 
   getNextStopOver = () => {
-    tripService.getNextStopOver("5c9f14e33f8a0430fa3e6b6c")
-      .then(data => {
-        console.log(data)
-        this.setState({
-          stopOver: data[0],
-        })
-      }).catch(error => {
-        console.log("error", error);
-      });
+    // tripService.getNextStopOver("5c9f14e33f8a0430fa3e6b6c")
+    //   .then(data => {
+    //     console.log(data)
+    //     this.setState({
+    //       stopOver: data[0],
+    //     })
+    //   }).catch(error => {
+    //     console.log("error", error);
+    //   });
   };
 
   render() {

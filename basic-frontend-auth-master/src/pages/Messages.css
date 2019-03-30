@@ -1,0 +1,44 @@
+.input-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  position: absolute;
+  bottom: 80px;
+  width: 100%;
+}
+
+.input-bar .input {
+  border: 1px solid #bac7d5;
+  border-radius: 20px;
+  padding: 0.8rem 1rem;
+  width: 100%;
+  margin: 0 1rem;
+  
+}
+
+.send-btn {
+  position: absolute;
+  right: 30px;
+  color: #46515e;
+}
+
+.box-conversation {
+  border: 1px solid #bac7d5;
+  border-radius: 5px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  width: 70%;
+}
+
+.sender {
+  position: relative;
+  left: 80px;
+  background: #9addd3;
+}
+
+.recipient {
+  position: relative;
+  left: 10px;
+}
+
